@@ -1,17 +1,19 @@
 package org.sang.bean;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 /**
  * Created by sang on 2018/1/12.
  */
+@NoArgsConstructor
+@Data
 public class Nation {
     private Long id;
     private String name;
 
     public Nation(String name) {
         this.name = name;
-    }
-
-    public Nation() {
     }
 
     @Override
@@ -29,19 +31,4 @@ public class Nation {
         return name != null ? name.hashCode() : 0;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 }

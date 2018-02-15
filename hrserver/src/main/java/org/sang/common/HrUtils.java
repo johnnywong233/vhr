@@ -8,6 +8,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
  */
 public class HrUtils {
     public static Hr getCurrentHr() {
+        //TODO
         return (Hr) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     }
 }

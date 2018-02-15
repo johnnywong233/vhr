@@ -1,8 +1,13 @@
 package org.sang.bean;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 /**
  * Created by sang on 2018/1/13.
  */
+@Data
+@NoArgsConstructor
 public class PoliticsStatus {
     private Long id;
     private String name;
@@ -24,26 +29,6 @@ public class PoliticsStatus {
 
     public PoliticsStatus(String name) {
 
-        this.name = name;
-    }
-
-    public PoliticsStatus() {
-
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
         this.name = name;
     }
 }

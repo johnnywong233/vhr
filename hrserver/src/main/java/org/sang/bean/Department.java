@@ -1,6 +1,8 @@
 package org.sang.bean;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,6 +10,8 @@ import java.util.List;
 /**
  * Created by sang on 2018/1/7.
  */
+@NoArgsConstructor
+@Data
 public class Department {
     private Long id;
     private String name;
@@ -15,9 +19,6 @@ public class Department {
     private String depPath;
     private boolean enabled;
     private boolean isParent;
-
-    public Department() {
-    }
 
     public Department(String name) {
         this.name = name;
@@ -56,30 +57,6 @@ public class Department {
 
     public void setResult(Integer result) {
         this.result = result;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Long getParentId() {
-        return parentId;
-    }
-
-    public void setParentId(Long parentId) {
-        this.parentId = parentId;
     }
 
     @JsonIgnore

@@ -21,7 +21,7 @@ import java.util.List;
 public class UrlFilterInvocationSecurityMetadataSource implements FilterInvocationSecurityMetadataSource {
     @Autowired
     MenuService menuService;
-    AntPathMatcher antPathMatcher = new AntPathMatcher();
+    private AntPathMatcher antPathMatcher = new AntPathMatcher();
 
     @Override
     public Collection<ConfigAttribute> getAttributes(Object o) throws IllegalArgumentException {

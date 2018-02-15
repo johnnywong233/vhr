@@ -1,35 +1,22 @@
 package org.sang.bean;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 /**
  * Created by sang on 2017/12/29.
  */
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class RespBean {
     private String status;
     private String msg;
 
-    public RespBean() {
-    }
-
-    public RespBean(String status, String msg) {
-
-        this.status = status;
-        this.msg = msg;
-    }
 
     public String getStatus() {
-
+        //todo
         return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public String getMsg() {
-        return msg;
-    }
-
-    public void setMsg(String msg) {
-        this.msg = msg;
     }
 }

@@ -1,10 +1,15 @@
 package org.sang.bean;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.sql.Timestamp;
 
 /**
  * Created by sang on 2018/1/11.
  */
+@Data
+@NoArgsConstructor
 public class JobLevel {
     private Long id;
     private String name;
@@ -26,44 +31,9 @@ public class JobLevel {
         return name != null ? name.hashCode() : 0;
     }
 
-    public JobLevel() {
-
-    }
-
     public JobLevel(String name) {
 
         this.name = name;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getTitleLevel() {
-        return titleLevel;
-    }
-
-    public void setTitleLevel(String titleLevel) {
-        this.titleLevel = titleLevel;
-    }
-
-    public Timestamp getCreateDate() {
-        return createDate;
-    }
-
-    public void setCreateDate(Timestamp createDate) {
-        this.createDate = createDate;
-    }
 }

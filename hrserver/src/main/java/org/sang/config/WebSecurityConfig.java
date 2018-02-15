@@ -13,13 +13,11 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.access.intercept.FilterSecurityInterceptor;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
-import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -82,17 +80,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 out.flush();
                 out.close();
             }
-        }).successHandler(new AuthenticationSuccessHandler() {
-            @Override
-            public void onAuthenticationSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) throws IOException, ServletException {
-                httpServletResponse.setContentType("application/json;charset=utf-8");
-                PrintWriter out = httpServletResponse.getWriter();
-                ObjectMapper objectMapper = new ObjectMapper();
-                String s = "{\"status\":\"success\",\"msg\":" + objectMapper.writeValueAsString(HrUtils.getCurrentHr()) + "}";
-                out.write(s);
-                out.flush();
-                out.close();
-            }
+        }).successHandler((httpServletRequest, httpServletResponse, authentication) -> {
+            httpServletResponse.setContentType("application/json;charset=utf-8");
+            PrintWriter out = httpServletResponse.getWriter();
+            ObjectMapper objectMapper = new ObjectMapper();
+            String s = "{\"status\":\"success\",\"msg\":" + objectMapper.writeValueAsString(HrUtils.getCurrentHr()) + "}";
+            out.write(s);
+            out.flush();
+            out.close();
         }).and().logout().permitAll().and().csrf().disable().exceptionHandling().accessDeniedHandler(authenticationAccessDeniedHandler);
     }
 }

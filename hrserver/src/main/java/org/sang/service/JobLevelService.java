@@ -19,6 +19,7 @@ public class JobLevelService {
 
     public int addJobLevel(JobLevel jobLevel) {
         if (jobLevelMapper.getJobLevelByName(jobLevel.getName()) != null) {
+            //todo
             return -1;
         }
         return jobLevelMapper.addJobLevel(jobLevel);
@@ -30,6 +31,7 @@ public class JobLevelService {
 
     public boolean deleteJobLevelById(String ids) {
         String[] split = ids.split(",");
+        //删除不成功则affected的 row 不等于 id 的个数
         return jobLevelMapper.deleteJobLevelById(split) == split.length;
     }
 
